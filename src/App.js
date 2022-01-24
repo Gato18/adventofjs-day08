@@ -1,6 +1,5 @@
 import "./styles.css";
 import { useEffect, useState } from "react";
-const { REACT_APP_WEATHER_API } = process.env;
 
 let convers = {
   "01d": {
@@ -76,7 +75,7 @@ function App() {
 
   useEffect(() => {
     async function userData() {
-      const data = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=49.194759399190666&lon=-0.3278595536520602&exclude=current,minutely,hourly,alerts&appid=${REACT_APP_WEATHER_API}&units=metric&lang=fr`);
+      const data = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=49.194759399190666&lon=-0.3278595536520602&exclude=current,minutely,hourly,alerts&appid=${process.env.REACT_APP_WEATHER_API}&units=metric&lang=fr`);
       const body = await data.json();
       setMeteo(body);
     }
